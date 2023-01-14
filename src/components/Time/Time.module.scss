@@ -1,0 +1,13 @@
+@import '../../styles/settings.scss';
+
+.time {
+  padding: 20px 0 8px 0;
+  color: $color-light;
+  font-family:'Times New Roman', Times, serif;
+  font-weight: normal;
+
+  h1 {
+    font-size: 55px;
+    margin: 0;
+  }
+}
