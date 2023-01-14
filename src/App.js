@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./components/Button/Button";
 import Container from "./components/Container/Container";
 import Time from "./components/Time/Time";
 
 const App = () => {
 
-  const [time, setTime] = useState([
+  const [time, setTime] = useState(0);
+  const [start, setStart] = useState('');
 
-  ]);
+  const run = () => {
+    setStart(setInterval(() => {
+      setTime(prevValue => prevValue + 1);
+    }, 1));
+  };
 
-  return (
+  useEffect(() => {
+    return() => {
+      if(start){
+        clearInterval(start);
+      }
+    };
+  }, []);
+
+  const stop = () => {
+    clearInterval(start);
+  };
+
+  const reset = () => {
+    setTime(0);
+  };
+
+  return(
     <Container>
-      <Time />
-      <Button>start</Button>
-      <Button>stop</Button>
-      <Button>reset</Button>
+      <Time time={time} />
+      <Button action={run}>start</Button>
+      <Button action={stop}>stop</Button>
+      <Button action={reset}>reset</Button>
     </Container>
   );
 };
