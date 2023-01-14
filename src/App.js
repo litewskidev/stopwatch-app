@@ -10,7 +10,7 @@ const App = () => {
 
   const run = () => {
     setStart(setInterval(() => {
-      setTime(prevValue => prevValue + 1);
+      setTime(time => time + 1);
     }, 1));
   };
 
